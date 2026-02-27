@@ -165,7 +165,7 @@ pytest tests/ -v --cov=src
 
 See [docs/PAPER.md](docs/PAPER.md) — "Verified Context Injection: Epistemically Scored Session Memory for Large Language Models"
 
-**Published:** Under review at Anthropic Research
+**Status:** Independent research — Base76 Research Lab, 2026
 **Authors:** Björn André Wikström (Base76)
 
 ## Citation

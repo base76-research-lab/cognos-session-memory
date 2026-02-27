@@ -5,9 +5,9 @@ Base76 Research Lab
 bjorn@base76.se
 ORCID: 0009-0000-4015-2357
 
-**Status:** Under review at Anthropic Research
-**Submission Date:** [TBD]
-**arXiv:** [TBD]
+**Status:** Independent research — Base76 Research Lab, 2026
+**arXiv:** [Pending]
+**Correspondence:** bjorn@base76.se
 
 ---
 
