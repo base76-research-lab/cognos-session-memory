@@ -110,6 +110,44 @@ Extract and score context.
 - **force** — always inject (for testing)
 - **dry_run** — compute score but never inject
 
+## Claude Code Integration
+
+### As a /compact replacement
+
+```bash
+# In any Claude Code session:
+/save
+```
+
+Claude writes a structured summary, trust-scores it, and persists it to SQLite.
+Next session: automatically injected as `SESSION_CONTEXT` before your first prompt.
+
+See [docs/COMPACT_ALTERNATIVE.md](docs/COMPACT_ALTERNATIVE.md) for a full comparison.
+
+### As an MCP server
+
+Add to `~/.claude/settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "cognos-session-memory": {
+      "command": "python3",
+      "args": ["/path/to/cognos-session-memory/mcp_server.py"]
+    }
+  }
+}
+```
+
+Tools exposed:
+
+| Tool | Description |
+|------|-------------|
+| `save_session(summary, project?)` | Trust-score and persist a session summary |
+| `load_session(threshold?)` | Retrieve last verified context (default threshold: 0.45) |
+
+---
+
 ## Quick Start
 
 ### Installation
@@ -148,6 +186,7 @@ curl -X POST http://127.0.0.1:8788/v1/plan \
 - **trace_store.py** — SQLite persistence (write/read/purge)
 - **plan.py** — Context extraction, trust scoring, system prompt building
 - **main.py** — FastAPI gateway + middleware
+- **mcp_server.py** — MCP stdio server (`save_session`, `load_session`)
 
 ## Testing
 
@@ -157,9 +196,8 @@ pytest tests/ -v --cov=src
 
 ## Documentation
 
-- [ARCHITECTURE.md](docs/ARCHITECTURE.md) — Deep dive into the epistemic model
-- [API_REFERENCE.md](docs/API_REFERENCE.md) — Detailed endpoint documentation
-- [EU_AI_ACT_COMPLIANCE.md](docs/EU_AI_ACT_COMPLIANCE.md) — Audit trail and compliance
+- [COMPACT_ALTERNATIVE.md](docs/COMPACT_ALTERNATIVE.md) — Why this beats `/compact`
+- [PAPER.md](docs/PAPER.md) — Research paper
 
 ## Research Paper
 
