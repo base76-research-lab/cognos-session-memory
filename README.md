@@ -1,5 +1,7 @@
 # CognOS Session Memory
 
+mcp-name: io.github.base76-research-lab/cognos-session-memory
+
 **Verified context injection via epistemic trust scoring for LLMs.**
 
 Solves session fragmentation by maintaining verified, high-confidence session context between conversations.

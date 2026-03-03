@@ -1,23 +1,41 @@
 [build-system]
-requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
-name = "cognos-session-memory"
+name = "cognos-session-memory-mcp"
 version = "0.1.0"
-description = "Verified context injection via epistemic trust scoring for LLMs"
+description = "MCP server for CognOS trust scoring and session trace storage"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
     {name = "Björn André Wikström", email = "bjorn@base76.se"}
 ]
 requires-python = ">=3.10"
+keywords = ["mcp", "cognos", "trust", "epistemic", "ai-safety", "session-memory"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.10",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 
 dependencies = [
+    "mcp>=1.0",
     "fastapi>=0.104.0",
     "uvicorn[standard]>=0.24.0",
     "pydantic>=2.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/base76-research-lab/cognos-session-memory"
+Repository = "https://github.com/base76-research-lab/cognos-session-memory"
+
+[project.scripts]
+cognos-session-memory-mcp = "cognos_session_memory_mcp:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["cognos_session_memory_mcp"]
 
 [project.optional-dependencies]
 dev = [
@@ -34,12 +52,6 @@ docs = [
     "mkdocs-material>=9.0",
 ]
 
-[project.urls]
-Repository = "https://github.com/base76-research-lab/cognos-session-memory"
-Issues = "https://github.com/base76-research-lab/cognos-session-memory/issues"
-
-[tool.setuptools]
-packages = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
